@@ -19,9 +19,9 @@ interface FieldProps {
 /* Tutorial Repeater Items */
 interface Item {
     id: string;
-    command_item_title: string;
-    command_item_description: string;
-    command_item_copy_command: string;
+    cli_command_title: string;
+    cli_command_description: string;
+    cli_command_item: string;
 }
 
 /** A simple utility function to create a 'blank' item
@@ -30,9 +30,9 @@ interface Item {
 function createItem(): Item {
     return {
         id: uuid(),
-        command_item_title: '',
-        command_item_description: '',
-        command_item_copy_command: '',
+        cli_command_title: '',
+        cli_command_description: '',
+        cli_command_item: '',
     };
 }
 
@@ -65,7 +65,7 @@ const Field = (props: FieldProps) => {
     /** Creates an `onChange` handler for an item based on its `property`
      * @returns A function which takes an `onChange` event 
     */
-    const createOnChangeHandler = (item: Item, property: 'command_item_title' | 'command_item_description' | 'command_item_copy_command') => (
+    const createOnChangeHandler = (item: Item, property: 'cli_command_title' | 'cli_command_description' | 'cli_command_item') => (
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
         const itemList = items.concat();
@@ -89,29 +89,29 @@ const Field = (props: FieldProps) => {
                         <TableRow key={item.id}>
                             <TableCell>
                                 <TextField
-                                    id="command_item_title"
-                                    name="command_item_title"
-                                    labelText="Command Title"
-                                    value={item.command_item_title}
-                                    onChange={createOnChangeHandler(item, 'command_item_title')}
+                                    id="cli_command_title"
+                                    name="cli_command_title"
+                                    labelText="CLI Command Title"
+                                    value={item.cli_command_title}
+                                    onChange={createOnChangeHandler(item, 'cli_command_title')}
                                 />
                             </TableCell>
                             <TableCell>
                                 <TextField
-                                    id="command_item_description"
-                                    name="command_item_description"
-                                    labelText="Command Description"
-                                    value={item.command_item_description}
-                                    onChange={createOnChangeHandler(item, 'command_item_description')}
+                                    id="cli_command_description"
+                                    name="cli_command_description"
+                                    labelText="CLI Command Description"
+                                    value={item.cli_command_description}
+                                    onChange={createOnChangeHandler(item, 'cli_command_description')}
                                 />
                             </TableCell>
                             <TableCell>
                                 <TextField
-                                    id="command_item_copy_command"
-                                    name="command_item_copy_command"
-                                    labelText="Command Copy CLI"
-                                    value={item.command_item_copy_command}
-                                    onChange={createOnChangeHandler(item, 'command_item_copy_command')}
+                                    id="cli_command_item"
+                                    name="cli_command_item"
+                                    labelText="CLI Command"
+                                    value={item.cli_command_item}
+                                    onChange={createOnChangeHandler(item, 'cli_command_item')}
                                 />
                             </TableCell>
                             <TableCell align="right">
